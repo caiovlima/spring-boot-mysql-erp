@@ -17,28 +17,28 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "book")
+@Table(name = "livro")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String nome;
 
-    private String isbn;
+    private String serial;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "autor_id")
     @JsonManagedReference
-    private Author author;
+    private Autor autor;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "book",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Lend> lends;
+    @OneToMany(mappedBy = "livro",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Aluguel> aluguels;
 
 
 }

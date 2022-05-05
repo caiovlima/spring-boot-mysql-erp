@@ -1,6 +1,5 @@
 package com.erpbiblioteca.api.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.List;
@@ -14,20 +13,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "author")
+@Table(name = "membro")
 @NoArgsConstructor
-public class Author {
+public class Membro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String primeiroNome;
+    private String segundoNome;
 
-    private String firstName;
-
-    private String lastName;
+    @Enumerated(EnumType.STRING)
+    private MembroStatus status;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "author",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Book> books;
+    @OneToMany(mappedBy = "membro",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Aluguel> alugueis;
 
 }

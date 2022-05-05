@@ -11,29 +11,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "lend")
+@Table(name = "aluguel")
 @NoArgsConstructor
-public class Lend {
+public class Aluguel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.ORDINAL)
-    private LendStatus status;
+    private AluguelStatus status;
 
-    private Instant startOn;
-    private Instant dueOn;
-
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    @JsonManagedReference
-    private Book book;
+    private Instant retiradoEm;
+    private Instant entregueEm;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "aluguel_id")
     @JsonManagedReference
-    private Member member;
+    private Livro livro;
+
+    @ManyToOne
+    @JoinColumn(name = "membro_id")
+    @JsonManagedReference
+    private Membro membro;
 
 
 

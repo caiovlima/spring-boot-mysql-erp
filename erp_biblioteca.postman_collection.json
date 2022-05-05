@@ -9,7 +9,7 @@
 			"name": "MYSQL",
 			"item": [
 				{
-					"name": "CREATE_AUTHOR",
+					"name": "CADASTRAR_AUTOR",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -22,10 +22,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\"\n}"
+							"raw": "{\n\t\"primeiroNome\": \"John\",\n\t\"segundoNome\": \"Doe\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/author",
+							"raw": "http://localhost:8080/api/biblioteca/autor",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -33,15 +33,15 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"author"
+								"biblioteca",
+								"autor"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "CREATE_BOOK",
+					"name": "CADASTRAR_LIVRO",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -54,10 +54,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"The Body: A Guide for Occupants\",\n\t\"isbn\": \"0316535575\",\n\t\"authorId\": 1\n}"
+							"raw": "{\n\t\"nome\": \"O Pequeno Principe\",\n\t\"isbn\": \"0316535575\",\n\t\"autorId\": 1\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/book",
+							"raw": "http://localhost:8080/api/biblioteca/livro",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -65,15 +65,15 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"book"
+								"biblioteca",
+								"livro"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "CREATE_A_MEMBER",
+					"name": "CADASTRAR_UM_MEMBRO",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -86,10 +86,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstName\": \"Johannes\",\n\t\"lastName\": \"Peters\"\n}"
+							"raw": "{\n\t\"primeiroNome\": \"Johannes\",\n\t\"segundoNome\": \"Peters\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/member",
+							"raw": "http://localhost:8080/api/biblioteca/membro",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -97,15 +97,15 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"member"
+								"biblioteca",
+								"membro"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "READ_BOOKS",
+					"name": "BUSCAR_LIVROS",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -114,7 +114,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/book",
+							"raw": "http://localhost:8080/api/biblioteca/livro",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -122,15 +122,15 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"book"
+								"biblioteca",
+								"livro"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "READ_BOOK_BY_ISBN",
+					"name": "BUSCAR_LIVRO_POR_SERIAL",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -139,7 +139,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/book?isbn=0316535575",
+							"raw": "http://localhost:8080/api/biblioteca/livro?serial=0316535575",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -147,12 +147,12 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"book"
+								"biblioteca",
+								"livro"
 							],
 							"query": [
 								{
-									"key": "isbn",
+									"key": "serial",
 									"value": "0316535575"
 								}
 							]
@@ -161,7 +161,7 @@
 					"response": []
 				},
 				{
-					"name": "READ_BOOK_BY_ID",
+					"name": "BUSCAR_LIVRO_POR_ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -170,7 +170,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/book/1",
+							"raw": "http://localhost:8080/api/biblioteca/livro/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -178,8 +178,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"book",
+								"biblioteca",
+								"livro",
 								"1"
 							]
 						}
@@ -187,7 +187,7 @@
 					"response": []
 				},
 				{
-					"name": "LEND_A_BOOK",
+					"name": "ALUGAR_UM_LIVRO",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -200,10 +200,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bookIds\": [\n        1\n    ],\n    \"memberId\": 1\n}"
+							"raw": "{\n    \"livrosIds\": [\n        1\n    ],\n    \"membroId\": 1\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/library/book/lend",
+							"raw": "http://localhost:8080/api/biblioteca/livro/aluguel",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -211,9 +211,9 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"library",
-								"book",
-								"lend"
+								"biblioteca",
+								"livro",
+								"aluguel"
 							]
 						}
 					},
